@@ -1,59 +1,55 @@
+import java.util.Objects;
+
 //Represents the entire library system
 class Library {
+    EmployeeDirectory emp = new EmployeeDirectory();
 
     int currentDay; // Current simulation day
-
     // add more fields here
     // add constructor(s) here
 
-    public void printReportHeader() {
-        System.out.println("""
+    public void report() {
+
+        String latePerson = emp.checkLateEmployee();
+        System.out.println();
+        System.out.print("""
                 OFFICIAL
                 END OF DAY DIRECTORATE REPORT.
                 
                 Department of State Records and Archives
                 CLASSIFICATION: TOP SECRET
                 
-                summary
-                employee status (at work on time, slacking off, doing good work, etc
-                employee comments (Personal comments regarding different things
-                
-                number of members and their names + fines owing
-                
-                books on shelf
-                books borrowed
-                books missing - borrower
-                
-                archives in storage
-                missing archives - classification type
-                
-                """);
-    }
-
-    // Just a normal day
-    public void report0() {
-        printReportHeader();
-        System.out.println("""
                 SUMMARY:
-                All staff clocked in on time and worked dutifully throughout the day. 
+                """);
+        if (latePerson == null) {
+            System.out.println("All staff clocked in on time and worked dutifully throughout the day.");
+        }
+        System.out.print("""
                 Staff note nothing of significance occured and operations continue as normal.
                 
                 EMPLOYEE STATUS:
-                %s
-                
                 """);
-    }
+        for (int i = 0; i < emp.employeeList.size(); i += 1) {
+            System.out.print(emp.employeeList.get(i));
+            if (Objects.equals(emp.employeeList.get(i), latePerson)) {
+                System.out.println(": LATE");
+            }
+            else {
+                System.out.println();
+            }
+        }
+            /*
+                COMMENTS:
 
-    public void report1() {
+                BOOK INVENTORY:
+                BORROWED BOOKS:
+                MISSING BOOKS:
 
-    }
+                ARCHIVE INVENTORY
+                MISSING ARCHIVES - CLASSIFICATION TYPE
+                """);
 
-    public void report2() {
-
-    }
-
-    public void report3() {
-
+             */
     }
 
 
