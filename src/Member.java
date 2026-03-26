@@ -3,20 +3,20 @@ public class Member {
     public ArrayList<String> members = new ArrayList<>();
 
     public Member() {
-        members.add("Olivia Harper");
-        members.add("Mason Whitaker");
-        members.add("Isabella Moreno");
-        members.add("Liam Gallagher");
-        members.add("Sophia Caldwell");
-        members.add("Ethan Price");
-        members.add("Ava Thompson");
-        members.add("Jackson Reid");
-        members.add("Mia Donovan");
-        members.add("Noah Sinclair");
-        members.add("Charlotte Benson");
-        members.add("Lucas Hawthorne");
-        members.add("Amelia Cruz");
-        members.add("Benjamin Foster");
-        members.add("Harper Mills");
+        members.add("Alexei Morozov");
+        members.add("Irina Lebedeva");
+        members.add("Vladimir Orlov");
+        members.add("Galina Sokolova");
+        members.add("Mikhail Fedorov");
+        members.add("Inga Priedītė");
+        members.add("Aurimas Jankauskas");
+        members.add("Simona Žemaitė");
+        members.add("Edgars Ozoliņš");
+        members.add("Līga Vītola");
+        members.add("Nikita Leonov");
+        members.add("Olga Kolesnikova");
+        members.add("Vytautas Petraitis");
+        members.add("Rūdolfs Kalniņš");
+        members.add("Marina Belova");
     }
 }
