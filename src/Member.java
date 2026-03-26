@@ -1,16 +1,8 @@
 import java.util.ArrayList;
 public class Member {
-    public ArrayList<String> employees = new ArrayList<>();
     public ArrayList<String> members = new ArrayList<>();
 
     public Member() {
-        employees.add("Ivan Yegorov");
-        employees.add("Dmitri Petrov");
-        employees.add("Sergei Kuznetsov");
-        employees.add("Anasatsia Ivanova");
-        employees.add("Tatiana Volkova");
-        employees.add("Ekaterina Smirnov");
-
         members.add("Olivia Harper");
         members.add("Mason Whitaker");
         members.add("Isabella Moreno");
