@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 public class Member {
+    /*
     public ArrayList<String> members = new ArrayList<>();
     public ArrayList<String> borrowedBooks = new ArrayList<>();
 
@@ -20,4 +21,6 @@ public class Member {
         members.add("Rūdolfs Kalniņš");
         members.add("Marina Belova");
     }
+
+     */
 }

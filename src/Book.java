@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Book {
+    /*
     public ArrayList<String> books = new ArrayList<>();
 
     public Book() {
@@ -35,17 +36,5 @@ public class Book {
         books.add("The White Guard - Mikhail Bulgakov");
         books.add("The Master and Margarita - Mikhail Bulgakov");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
+    */
 }
