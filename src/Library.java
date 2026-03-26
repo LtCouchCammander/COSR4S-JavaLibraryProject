@@ -2,12 +2,13 @@ import java.util.Objects;
 
 //Represents the entire library system
 class Library {
-    EmployeeDirectory emp = new EmployeeDirectory();
+
+    //EmployeeDirectory emp = new EmployeeDirectory();
 
     int currentDay; // Current simulation day
     // add more fields here
     // add constructor(s) here
-
+    /*
     public void report() {
 
         String latePerson = emp.checkLateEmployee();
@@ -15,10 +16,10 @@ class Library {
         System.out.print("""
                 OFFICIAL
                 END OF DAY DIRECTORATE REPORT.
-                
+
                 Department of State Records and Archives
                 CLASSIFICATION: TOP SECRET
-                
+
                 SUMMARY:
                 """);
         if (latePerson == null) {
@@ -29,7 +30,7 @@ class Library {
         }
         System.out.print("""
                 Staff note nothing of significance occured and operations continue as normal.
-                
+
                 EMPLOYEE STATUS:
                 """);
         for (int i = 0; i < emp.employeeList.size(); i += 1) {
@@ -54,8 +55,7 @@ class Library {
                 MISSING ARCHIVES - CLASSIFICATION TYPE
                 """);
 
-             */
     }
-
+*/
 
 }

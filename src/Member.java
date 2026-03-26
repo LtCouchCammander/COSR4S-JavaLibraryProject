@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 public class Member {
     public ArrayList<String> members = new ArrayList<>();
+    public ArrayList<String> borrowedBooks = new ArrayList<>();
 
     public Member() {
         members.add("Alexei Morozov");
