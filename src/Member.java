@@ -23,4 +23,9 @@ public class Member {
     }
 
      */
+
+    String firstName;
+    String lastName;
+    String[] borrowedBooks;
+    int finesOwed;
 }

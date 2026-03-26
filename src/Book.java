@@ -37,4 +37,7 @@ public class Book {
         books.add("The Master and Margarita - Mikhail Bulgakov");
     }
     */
+    String title;
+    String author;
+    String genre;
 }

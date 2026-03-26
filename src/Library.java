@@ -6,6 +6,8 @@ class Library {
     //EmployeeDirectory emp = new EmployeeDirectory();
 
     int currentDay; // Current simulation day
+
+
     // add more fields here
     // add constructor(s) here
     /*
