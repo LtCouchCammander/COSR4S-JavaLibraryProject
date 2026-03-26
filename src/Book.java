@@ -40,4 +40,8 @@ public class Book {
     String title;
     String author;
     String genre;
+
+    public Book(String title, String author, String genre) {
+
+    }
 }

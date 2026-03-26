@@ -1,13 +1,26 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Objects;
 
 //Represents the entire library system
 class Library {
-
-    //EmployeeDirectory emp = new EmployeeDirectory();
-
     int currentDay; // Current simulation day
 
+    Book[] books;
+    Member[] members;
 
+    public Library() {
+        books = new Book[15];
+
+    }
+
+
+
+
+
+
+
+    //EmployeeDirectory emp = new EmployeeDirectory();
     // add more fields here
     // add constructor(s) here
     /*
