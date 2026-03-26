@@ -38,9 +38,11 @@ class Library {
                 System.out.println(": LATE");
             }
             else {
-                System.out.println();
+                System.out.println(": PRESENT");
             }
         }
+
+        System.out.println("\nBOOK INVENTORY");
             /*
                 COMMENTS:
 
