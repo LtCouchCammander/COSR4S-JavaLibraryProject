@@ -24,6 +24,9 @@ class Library {
         if (latePerson == null) {
             System.out.println("All staff clocked in on time and worked dutifully throughout the day.");
         }
+        else {
+            System.out.println("One Staff member was late. This will reflect greatly on their record...");
+        }
         System.out.print("""
                 Staff note nothing of significance occured and operations continue as normal.
                 
