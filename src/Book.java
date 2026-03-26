@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Book {
     public ArrayList<String> books = new ArrayList<>();
 
-    public book() {
+    public Book() {
         books.add("How the Steel Was Tempered - Nikolai Ostrovsky");
         books.add("And Quiet Flows the Don - Mikhail Sholokhov");
         books.add("The Quiet Don - Mikhail Sholokhov");
