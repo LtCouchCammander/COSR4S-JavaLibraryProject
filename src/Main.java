@@ -13,12 +13,16 @@ public class Main {
             // simulate a random event
             int randomNumber = Rand.randomInt(0, 4); // could generate 0, 1, 2, or 3
 
+
+            /*
             switch (randomNumber) {
                 case 0 -> lib.report0();
                 case 1 -> lib.report1();
                 case 2 -> lib.report2();
                 case 3 -> lib.report3();
             }
+
+             */
 
             Input.waitForUserToPressEnter("Press Enter to simulate the next day.");
         }
