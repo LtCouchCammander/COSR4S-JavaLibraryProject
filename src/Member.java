@@ -9,10 +9,9 @@ public class Member {
         employees.add("Sergei Kuznetsov");
         employees.add("Anasatsia Ivanova");
         employees.add("Tatiana Volkova");
-        employees.add("Ekaterina Kuznetsova");
+        employees.add("Ekaterina Smirnov");
         //employees.add("Natalia Petrova");
         //employees.add("Olga Smirnova");
-        //employees.add("Alexei Smirnov");
         //employees.add("Nikolai Volkov");
         // 10 employees might be a lot, i just took out 4.
 
