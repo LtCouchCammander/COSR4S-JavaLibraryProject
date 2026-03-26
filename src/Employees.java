@@ -18,7 +18,7 @@ public class Employees {
            return null;
        }
 
-       int chance = Rand.randomInt(1, 10);
+       int chance = Rand.randomInt(1, 11);
 
        if (chance != 1) {
            return null;
