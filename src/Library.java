@@ -57,8 +57,13 @@ import java.util.ArrayList;
 
 
 
+
+
 // This is the Ai behavior code
 public void simulateAction() {
+    for (Loan loan : loans) {
+        loan.incrementDays();
+    }
 
     int action = Rand.randomInt(0, 2); // 0 or 1
 
@@ -67,23 +72,41 @@ public void simulateAction() {
     if (action == 0) {
         // Borrow book
         Book book = books.get(Rand.randomInt(0, books.size()));
+        // gets book
 
         if (book.isAvailable()) {
+            // sets book to borrowed
             book.borrowBook();
+            // adds borrowed book under member who borrowed it
             member.borrow(book);
 
             loans.add(new Loan(book, member));
 
             System.out.println(member.getName() + " borrowed - " + book.getTitle());
         }
+    }
 
-    } else {
+    else {
         // Return book (if they have one)
         if (!member.getBorrowedBooks().isEmpty()) {
             Book book = member.getBorrowedBooks().get(0);
 
             book.returnBook();
             member.returnBook(book);
+
+            // REMOVE matching loan
+            Loan loanToRemove = null;
+
+            for (Loan loan : loans) {
+                if (loan.getBook() == book && loan.getMember() == member) {
+                    loanToRemove = loan;
+                    break;
+                }
+            }
+
+            if (loanToRemove != null) {
+                loans.remove(loanToRemove);
+            }
 
             System.out.println(member.getName() + " returned - " + book.getTitle());
         }
@@ -108,6 +131,15 @@ public void simulateAction() {
                 System.out.println(b.getTitle() + " | Available: " + b.isAvailable());
             }
 
+            System.out.println("\n--- Active Loans ---");
+
+            for (Loan loan : loans) {
+                System.out.println(
+                        loan.getMember().getName() + " has \"" +
+                                loan.getBook().getTitle() + "\" for " +
+                                loan.getDaysBorrowed() + " days"
+                );
+            }
             System.out.println("----------------------\n");
         }
 

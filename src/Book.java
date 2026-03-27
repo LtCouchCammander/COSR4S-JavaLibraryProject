@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Book {
+        // declares variable types
         private String title;
         private boolean isAvailable;
 

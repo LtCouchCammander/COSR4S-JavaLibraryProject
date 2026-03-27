@@ -3,11 +3,10 @@ import java.util.ArrayList;
 public class Member {
 
     private String name;
-    private ArrayList<Book> borrowedBooks;
+    private ArrayList<Book> borrowedBooks = new ArrayList<>();
 
     public Member(String name) {
         this.name = name;
-        borrowedBooks = new ArrayList<>();
     }
 
     public String getName() {
