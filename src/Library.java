@@ -129,10 +129,10 @@ public void simulateAction() {
 
                 );
 
-                int over20Days = loan.getDaysBorrowed() / 20;
-                if (over20Days > 1) {
-                    int fineOwed = over20Days * 550;
-                    System.out.print("Fines Owed: " + fineOwed);
+                float over20Days = (float) loan.getDaysBorrowed() / 20;
+                if (over20Days >= 1) {
+                    float fineOwed = over20Days * 550;
+                    System.out.println("Over Due Fines | ₽ Owed: " + fineOwed);
                 }
             }
             System.out.println("----------------------\n");
