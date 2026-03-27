@@ -16,25 +16,16 @@ class Library {
 
 
  */
-
-
-
-
-
 // library core
 import java.util.ArrayList;
 
     public class Library {
         int currentDay; // Current simulation day
-        private ArrayList<Book> books;
-        private ArrayList<Member> members;
-        private ArrayList<Loan> loans;
+        private ArrayList<Book> books = new ArrayList<>();
+        private ArrayList<Member> members = new ArrayList<>();
+        private ArrayList<Loan> loans = new ArrayList<>();
 
         public Library() {
-            books = new ArrayList<>();
-            members = new ArrayList<>();
-            loans = new ArrayList<>();
-
             // Hard-coded books
             books.add(new Book("War and Peace"));
             books.add(new Book("Crime and Punishment"));
@@ -44,10 +35,6 @@ import java.util.ArrayList;
             members.add(new Member("Ivan"));
             members.add(new Member("Anastasia"));
         }
-
-
-
-
 
 // This is the Ai behavior code
         public void simulateAction() {
@@ -81,8 +68,6 @@ import java.util.ArrayList;
             }
         }
 
-
-
 // display the status of the library
         public void displayStatus() {
             System.out.println("\n--- Library Status ---");
@@ -93,8 +78,6 @@ import java.util.ArrayList;
 
             System.out.println("----------------------\n");
         }
-
-
 
     //EmployeeDirectory emp = new EmployeeDirectory();
     // add more fields here
