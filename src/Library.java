@@ -25,6 +25,7 @@ class Library {
 import java.util.ArrayList;
 
     public class Library {
+        int currentDay; // Current simulation day
         private ArrayList<Book> books;
         private ArrayList<Member> members;
         private ArrayList<Loan> loans;
