@@ -25,6 +25,7 @@ import java.util.ArrayList;
         private ArrayList<Member> members = new ArrayList<>();
         private ArrayList<Loan> loans = new ArrayList<>();
 
+        // Adds members and books into arrays
         public Library() {
             // Hard-coded books in the library
             books.add(new Book("War and Peace"));
@@ -39,7 +40,6 @@ import java.util.ArrayList;
             books.add(new Book("A Month in the Country"));
             books.add(new Book("The Red Wheel"));
             books.add(new Book("Oblomov"));
-         
 
             // Hard-coded members of the library
             members.add(new Member("Ivan Petrov"));
@@ -55,14 +55,10 @@ import java.util.ArrayList;
         }
 
 
-
-
-
-
 // This is the Ai behavior code
 public void simulateAction() {
-    for (Loan loan : loans) {
-        loan.incrementDays();
+    for (Loan value : loans) {
+        value.incrementDays();
     }
 
     int action = Rand.randomInt(0, 2); // 0 or 1
@@ -86,8 +82,9 @@ public void simulateAction() {
         }
     }
 
+
+    // Return book (if they have one)
     else {
-        // Return book (if they have one)
         if (!member.getBorrowedBooks().isEmpty()) {
             Book book = member.getBorrowedBooks().get(0);
 
@@ -114,10 +111,6 @@ public void simulateAction() {
 }
 
 
-
-
-
-
 // display the status of the library
         public void displayStatus() {
             System.out.println("\n--- Library Status ---");
@@ -133,12 +126,17 @@ public void simulateAction() {
                         loan.getMember().getName() + " has \"" +
                                 loan.getBook().getTitle() + "\" for " +
                                 loan.getDaysBorrowed() + " days"
+
                 );
+
+                int over20Days = loan.getDaysBorrowed() / 20;
+                if (over20Days > 1) {
+                    int fineOwed = over20Days * 550;
+                    System.out.print("Fines Owed: " + fineOwed);
+                }
             }
             System.out.println("----------------------\n");
         }
-
-
 
 
     //EmployeeDirectory emp = new EmployeeDirectory();

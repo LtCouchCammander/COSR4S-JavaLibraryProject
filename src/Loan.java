@@ -24,5 +24,7 @@ public class Loan {
         public Member getMember() {
             return member;
         }
+
+
     }
 

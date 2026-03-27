@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
 public class Book {
+
         // declares variable types
+        // Two attributes: Title name and if the book is available or not
         private String title;
         private boolean isAvailable;
 
