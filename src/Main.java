@@ -9,9 +9,11 @@ public class Main {
             System.out.println("\n--- Day " + lib.currentDay + " ---");
 
             // Simulate AI code here
+            lib.simulateAction();
 
 
             // Show current state of lib code here
+            lib.displayStatus();
 
 
             // Pause using provided Input class
