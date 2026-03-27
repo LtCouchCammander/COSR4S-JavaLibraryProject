@@ -26,15 +26,36 @@ import java.util.ArrayList;
         private ArrayList<Loan> loans = new ArrayList<>();
 
         public Library() {
-            // Hard-coded books
+            // Hard-coded books in the library
             books.add(new Book("War and Peace"));
             books.add(new Book("Crime and Punishment"));
             books.add(new Book("The Master and Margarita"));
+            books.add(new Book("One Day in the Life of Ivan Denisovich"));
+            books.add(new Book("Dead Souls"));
+            books.add(new Book("The Brothers Karamazov"));
+            books.add(new Book("Notes from Underground"));
+            books.add(new Book("Fathers and Sons"));
+            books.add(new Book("The Overcoat"));
+            books.add(new Book("A Month in the Country"));
+            books.add(new Book("The Red Wheel"));
+            books.add(new Book("Oblomov"));
+         
 
-            // Hard-coded members
-            members.add(new Member("Ivan"));
-            members.add(new Member("Anastasia"));
+            // Hard-coded members of the library
+            members.add(new Member("Ivan Petrov"));
+            members.add(new Member("Anastasia Ivanova"));
+            members.add(new Member("Sergi Kuznetsov"));
+            members.add(new Member("Alexei smirnov"));
+            members.add(new Member("Nikolai Volkov"));
+            members.add(new Member("Ekaterina Petrova"));
+            members.add(new Member("Olga Sokolova"));
+            members.add(new Member("Vladimir Morozov"));
+            members.add(new Member("Yuri Lebedev"));
+            members.add(new Member("Tatiana Orlova"));
         }
+
+
+
 
 // This is the Ai behavior code
         public void simulateAction() {
@@ -52,7 +73,7 @@ import java.util.ArrayList;
 
                     loans.add(new Loan(book, member));
 
-                    System.out.println(member.getName() + " borrowed " + book.getTitle());
+                    System.out.println(member.getName() + " borrowed - " + book.getTitle());
                 }
 
             } else {
@@ -63,10 +84,11 @@ import java.util.ArrayList;
                     book.returnBook();
                     member.returnBook(book);
 
-                    System.out.println(member.getName() + " returned " + book.getTitle());
+                    System.out.println(member.getName() + " returned - " + book.getTitle());
                 }
             }
         }
+
 
 // display the status of the library
         public void displayStatus() {
@@ -78,6 +100,9 @@ import java.util.ArrayList;
 
             System.out.println("----------------------\n");
         }
+
+
+
 
     //EmployeeDirectory emp = new EmployeeDirectory();
     // add more fields here
