@@ -1,10 +1,7 @@
-// Simulation
 public class Main {
     public static void main(String[] args) {
 
         Library lib = new Library();
-
-
 
         while (true) {
 
@@ -12,33 +9,17 @@ public class Main {
             lib.currentDay = lib.currentDay + 1;
             System.out.println("\n--- Day " + lib.currentDay + " ---");
 
+            // Simulate AI code here
 
 
+            // Show current state of lib code here
 
 
-            System.out.println("");
-
-
-// GPT main loop but scanner is imported which we do not need
-import java.util.Scanner;
-
-            public class Main {
-                public static void main(String[] args) {
-                    Library library = new Library();
-                    Scanner scanner = new Scanner(System.in);
-
-                    while (true) {
-                        library.simulateAction();
-                        library.displayStatus();
-
-                        System.out.println("Press Enter to continue...");
-                        scanner.nextLine();
-                    }
-                }
-            }
-
-
-
+            // Pause using provided Input class
+            Input.waitForUserToPressEnter("Press Enter to simulate the next day.");
+        }
+    }
+}
 
 
 
@@ -59,7 +40,4 @@ import java.util.Scanner;
             }
             lib.report();
              */
-            Input.waitForUserToPressEnter("Press Enter to simulate the next day.");
-        }
-    }
-}
+           // Input.waitForUserToPressEnter("Press Enter to simulate the next day.");
