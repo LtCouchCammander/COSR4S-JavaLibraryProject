@@ -19,8 +19,23 @@ public class Main {
             System.out.println("");
 
 
+// GPT main loop but scanner is imported which we do not need
+import java.util.Scanner;
 
+            public class Main {
+                public static void main(String[] args) {
+                    Library library = new Library();
+                    Scanner scanner = new Scanner(System.in);
 
+                    while (true) {
+                        library.simulateAction();
+                        library.displayStatus();
+
+                        System.out.println("Press Enter to continue...");
+                        scanner.nextLine();
+                    }
+                }
+            }
 
 
 

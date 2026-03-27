@@ -19,6 +19,98 @@ class Library {
 
 
 
+// library core
+import java.util.ArrayList;
+
+    public class Library {
+        private ArrayList<Book> books;
+        private ArrayList<Member> members;
+        private ArrayList<Loan> loans;
+
+        public Library() {
+            books = new ArrayList<>();
+            members = new ArrayList<>();
+            loans = new ArrayList<>();
+
+            // Hard-coded books
+            books.add(new Book("War and Peace"));
+            books.add(new Book("Crime and Punishment"));
+            books.add(new Book("The Master and Margarita"));
+
+            // Hard-coded members
+            members.add(new Member("Ivan"));
+            members.add(new Member("Anastasia"));
+        }
+
+
+
+
+
+// This is the Ai behavior code
+        public void simulateAction() {
+            int action = (int)(Math.random() * 2);
+
+            Member member = members.get((int)(Math.random() * members.size()));
+
+            if (action == 0) {
+                // Borrow book
+                Book book = books.get((int)(Math.random() * books.size()));
+
+                if (book.isAvailable()) {
+                    book.borrowBook();
+                    member.borrow(book);
+
+                    loans.add(new Loan(book, member));
+
+                    System.out.println(member.getName() + " borrowed " + book.getTitle());
+                }
+
+            } else {
+                // Return book (if they have one)
+                if (!member.getBorrowedBooks().isEmpty()) {
+                    Book book = member.getBorrowedBooks().get(0);
+
+                    book.returnBook();
+                    member.returnBook(book);
+
+                    System.out.println(member.getName() + " returned " + book.getTitle());
+                }
+            }
+        }
+
+
+
+// display the status of the library
+        public void displayStatus() {
+            System.out.println("\n--- Library Status ---");
+
+            for (Book b : books) {
+                System.out.println(b.getTitle() + " | Available: " + b.isAvailable());
+            }
+
+            System.out.println("----------------------\n");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //EmployeeDirectory emp = new EmployeeDirectory();
     // add more fields here
