@@ -58,36 +58,46 @@ import java.util.ArrayList;
 
 
 // This is the Ai behavior code
-        public void simulateAction() {
-            int action = (int)(Math.random() * 2);
+public void simulateAction() {
 
-            Member member = members.get((int)(Math.random() * members.size()));
+    int action = Rand.randomInt(0, 2); // 0 or 1
 
-            if (action == 0) {
-                // Borrow book
-                Book book = books.get((int)(Math.random() * books.size()));
+    Member member = members.get(Rand.randomInt(0, members.size()));
 
-                if (book.isAvailable()) {
-                    book.borrowBook();
-                    member.borrow(book);
+    if (action == 0) {
+        // Borrow book
+        Book book = books.get(Rand.randomInt(0, books.size()));
 
-                    loans.add(new Loan(book, member));
+        if (book.isAvailable()) {
+            book.borrowBook();
+            member.borrow(book);
 
-                    System.out.println(member.getName() + " borrowed - " + book.getTitle());
-                }
+            loans.add(new Loan(book, member));
 
-            } else {
-                // Return book (if they have one)
-                if (!member.getBorrowedBooks().isEmpty()) {
-                    Book book = member.getBorrowedBooks().get(0);
-
-                    book.returnBook();
-                    member.returnBook(book);
-
-                    System.out.println(member.getName() + " returned - " + book.getTitle());
-                }
-            }
+            System.out.println(member.getName() + " borrowed - " + book.getTitle());
         }
+
+    } else {
+        // Return book (if they have one)
+        if (!member.getBorrowedBooks().isEmpty()) {
+            Book book = member.getBorrowedBooks().get(0);
+
+            book.returnBook();
+            member.returnBook(book);
+
+            System.out.println(member.getName() + " returned - " + book.getTitle());
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 // display the status of the library
