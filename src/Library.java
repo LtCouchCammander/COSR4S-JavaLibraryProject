@@ -118,11 +118,6 @@ public void simulateAction() {
 
 
 
-
-
-
-
-
 // display the status of the library
         public void displayStatus() {
             System.out.println("\n--- Library Status ---");

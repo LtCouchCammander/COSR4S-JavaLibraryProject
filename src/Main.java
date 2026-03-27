@@ -24,11 +24,6 @@ public class Main {
 
 
 
-
-
-
-
-
             /*
             // simulate a random event
             int randomNumber = Rand.randomInt(0, 4); // could generate 0, 1, 2, or 3
