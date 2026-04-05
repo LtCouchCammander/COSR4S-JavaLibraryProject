@@ -2,13 +2,16 @@ import java.util.ArrayList;
 
 public class Member {
 
-    private String name;
-    private ArrayList<Book> borrowedBooks = new ArrayList<>();
+    String name;
+    ArrayList<Book> borrowedBooks = new ArrayList<>();
 
     public Member(String name) {
         this.name = name;
     }
 
+
+    // ______________________________________________________
+/*
     public String getName() {
         return name;
     }
@@ -24,4 +27,6 @@ public class Member {
     public ArrayList<Book> getBorrowedBooks() {
         return borrowedBooks;
     }
+
+ */
 }

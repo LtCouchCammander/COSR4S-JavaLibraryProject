@@ -19,125 +19,128 @@ class Library {
 // library core
 import java.util.ArrayList;
 
-    public class Library {
-        int currentDay; // Current simulation day
-        private ArrayList<Book> books = new ArrayList<>();
-        private ArrayList<Member> members = new ArrayList<>();
-        private ArrayList<Loan> loans = new ArrayList<>();
+public class Library {
+    int currentDay; // Current simulation day
+    ArrayList<Book> books = new ArrayList<>();
+    ArrayList<Member> members = new ArrayList<>();
+    ArrayList<Loan> loans = new ArrayList<>();
 
-        // Adds members and books into arrays
-        public Library() {
-            // Hard-coded books in the library
-            books.add(new Book("War and Peace"));
-            books.add(new Book("Crime and Punishment"));
-            books.add(new Book("The Master and Margarita"));
-            books.add(new Book("One Day in the Life of Ivan Denisovich"));
-            books.add(new Book("Dead Souls"));
-            books.add(new Book("The Brothers Karamazov"));
-            books.add(new Book("Notes from Underground"));
-            books.add(new Book("Fathers and Sons"));
-            books.add(new Book("The Overcoat"));
-            books.add(new Book("A Month in the Country"));
-            books.add(new Book("The Red Wheel"));
-            books.add(new Book("Oblomov"));
+    // Adds members and books into arrays
+    public Library() {
+        // Hard-coded books in the library
+        books.add(new Book("War and Peace"));
+        books.add(new Book("Crime and Punishment"));
+        books.add(new Book("The Master and Margarita"));
+        books.add(new Book("One Day in the Life of Ivan Denisovich"));
+        books.add(new Book("Dead Souls"));
+        books.add(new Book("The Brothers Karamazov"));
+        books.add(new Book("Notes from Underground"));
+        books.add(new Book("Fathers and Sons"));
+        books.add(new Book("The Overcoat"));
+        books.add(new Book("A Month in the Country"));
+        books.add(new Book("The Red Wheel"));
+        books.add(new Book("Oblomov"));
 
-            // Hard-coded members of the library
-            members.add(new Member("Ivan Petrov"));
-            members.add(new Member("Anastasia Ivanova"));
-            members.add(new Member("Sergi Kuznetsov"));
-            members.add(new Member("Alexei smirnov"));
-            members.add(new Member("Nikolai Volkov"));
-            members.add(new Member("Ekaterina Petrova"));
-            members.add(new Member("Olga Sokolova"));
-            members.add(new Member("Vladimir Morozov"));
-            members.add(new Member("Yuri Lebedev"));
-            members.add(new Member("Tatiana Orlova"));
+        // Hard-coded members of the library
+        members.add(new Member("Ivan Petrov"));
+        members.add(new Member("Anastasia Ivanova"));
+        members.add(new Member("Sergi Kuznetsov"));
+        members.add(new Member("Alexei smirnov"));
+        members.add(new Member("Nikolai Volkov"));
+        members.add(new Member("Ekaterina Petrova"));
+        members.add(new Member("Olga Sokolova"));
+        members.add(new Member("Vladimir Morozov"));
+        members.add(new Member("Yuri Lebedev"));
+        members.add(new Member("Tatiana Orlova"));
+    }
+
+/*
+    // This is the Ai behavior code
+    public void simulateAction() {
+        //for (Loan value : loans) {
+            //value.incrementDays();
+        //}
+
+        int action = Rand.randomInt(0, 2); // 0 or 1
+
+        //gets a random number from 0 - the size of the members array. The random number is the index, and that element at the index is stored in memberVariable
+        Member memberVariable = members.get(Rand.randomInt(0, members.size()));
+
+        if (action == 0) {
+            // Borrow book
+            Book bookVariable = books.get(Rand.randomInt(0, books.size()));
+            // gets book
+
+            if (bookVariable.isAvailable()) {
+                // sets book to borrowed
+                bookVariable.borrowBook();
+                // adds borrowed book under member who borrowed it
+                memberVariable.borrow(bookVariable);
+
+                loans.add(new Loan(bookVariable, memberVariable));
+
+                System.out.println(memberVariable.getName() + " borrowed - " + bookVariable.getTitle());
+            }
         }
 
 
-// This is the Ai behavior code
-public void simulateAction() {
-    for (Loan value : loans) {
-        value.incrementDays();
-    }
+        // Return book (if they have one)
+        else {
+            if (!memberVariable.getBorrowedBooks().isEmpty()) {
+                Book book = memberVariable.getBorrowedBooks().get(0);
 
-    int action = Rand.randomInt(0, 2); // 0 or 1
+                book.returnBook();
+                memberVariable.returnBook(book);
 
-    Member member = members.get(Rand.randomInt(0, members.size()));
+                // REMOVE matching loan
+                Loan loanToRemove = null;
 
-    if (action == 0) {
-        // Borrow book
-        Book book = books.get(Rand.randomInt(0, books.size()));
-        // gets book
-
-        if (book.isAvailable()) {
-            // sets book to borrowed
-            book.borrowBook();
-            // adds borrowed book under member who borrowed it
-            member.borrow(book);
-
-            loans.add(new Loan(book, member));
-
-            System.out.println(member.getName() + " borrowed - " + book.getTitle());
-        }
-    }
-
-
-    // Return book (if they have one)
-    else {
-        if (!member.getBorrowedBooks().isEmpty()) {
-            Book book = member.getBorrowedBooks().get(0);
-
-            book.returnBook();
-            member.returnBook(book);
-
-            // REMOVE matching loan
-            Loan loanToRemove = null;
-
-            for (Loan loan : loans) {
-                if (loan.getBook() == book && loan.getMember() == member) {
-                    loanToRemove = loan;
-                    break;
+                for (Loan loan : loans) {
+                    if (loan.book == book && loan.getMember() == memberVariable) {
+                        loanToRemove = loan;
+                        break;
+                    }
                 }
-            }
 
-            if (loanToRemove != null) {
-                loans.remove(loanToRemove);
-            }
+                if (loanToRemove != null) {
+                    loans.remove(loanToRemove);
+                }
 
-            System.out.println(member.getName() + " returned - " + book.getTitle());
+                System.out.println(memberVariable.getName() + " returned - " + book.getTitle());
+            }
         }
     }
-}
 
 
-// display the status of the library
-        public void displayStatus() {
-            System.out.println("\n--- Library Status ---");
+    // display the status of the library
+    public void displayStatus() {
+        System.out.println("\n--- Library Status ---");
 
-            for (Book b : books) {
-                System.out.println(b.getTitle() + " | Available: " + b.isAvailable());
-            }
-
-            System.out.println("\n--- Active Loans ---");
-
-            for (Loan loan : loans) {
-                System.out.println(
-                        loan.getMember().getName() + " has \"" +
-                                loan.getBook().getTitle() + "\" for " +
-                                loan.getDaysBorrowed() + " days"
-
-                );
-
-                float over20Days = (float) loan.getDaysBorrowed() / 20;
-                if (over20Days >= 1) {
-                    float fineOwed = over20Days * 550;
-                    System.out.println("Over Due Fines | ₽ Owed: " + fineOwed);
-                }
-            }
-            System.out.println("----------------------\n");
+        for (Book b : books) {
+            System.out.println(b.getTitle() + " | Available: " + b.isAvailable());
         }
 
+        System.out.println("\n--- Active Loans ---");
+
+        for (Loan loan : loans) {
+            System.out.println(
+                    loan.member.name + " has \"" +
+                            loan.book.title + "\" for " +
+                            loan.daysBorrowed + " days"
+
+            );
+
+            float over20Days = (float) loan.getDaysBorrowed() / 20;
+            if (over20Days >= 1) {
+                float fineOwed = over20Days * 550;
+                System.out.println("Over Due Fines | ₽ Owed: " + fineOwed);
+            }
+        }
+        System.out.println("----------------------\n");
+    }
+
+
+ */
 
     //EmployeeDirectory emp = new EmployeeDirectory();
     // add more fields here
