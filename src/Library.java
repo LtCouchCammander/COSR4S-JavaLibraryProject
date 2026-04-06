@@ -1,76 +1,38 @@
-import java.lang.reflect.Array;
+// library core
 import java.util.ArrayList;
-import java.util.Objects;
 
-//Represents the entire library system
-class Library {
+public class Library {
     int currentDay; // Current simulation day
+    ArrayList<Book> books = new ArrayList<>();
+    ArrayList<Member> members = new ArrayList<>();
+    ArrayList<Loan> loans = new ArrayList<>();
 
-    Book[] books;
-    Member[] members;
-
+    // Adds members and books into arrays
     public Library() {
-        books = new Book[15];
+        // Hard-coded books in the library
+        books.add(new Book("War and Peace"));
+        books.add(new Book("Crime and Punishment"));
+        books.add(new Book("The Master and Margarita"));
+        books.add(new Book("One Day in the Life of Ivan Denisovich"));
+        books.add(new Book("Dead Souls"));
+        books.add(new Book("The Brothers Karamazov"));
+        books.add(new Book("Notes from Underground"));
+        books.add(new Book("Fathers and Sons"));
+        books.add(new Book("The Overcoat"));
+        books.add(new Book("A Month in the Country"));
+        books.add(new Book("The Red Wheel"));
+        books.add(new Book("Oblomov"));
 
+        // Hard-coded members of the library
+        members.add(new Member("Ivan Petrov"));
+        members.add(new Member("Anastasia Ivanova"));
+        members.add(new Member("Sergi Kuznetsov"));
+        members.add(new Member("Alexei smirnov"));
+        members.add(new Member("Nikolai Volkov"));
+        members.add(new Member("Ekaterina Petrova"));
+        members.add(new Member("Olga Sokolova"));
+        members.add(new Member("Vladimir Morozov"));
+        members.add(new Member("Yuri Lebedev"));
+        members.add(new Member("Tatiana Orlova"));
     }
-
-
-
-
-
-
-
-    //EmployeeDirectory emp = new EmployeeDirectory();
-    // add more fields here
-    // add constructor(s) here
-    /*
-    public void report() {
-
-        String latePerson = emp.checkLateEmployee();
-        System.out.println();
-        System.out.print("""
-                OFFICIAL
-                END OF DAY DIRECTORATE REPORT.
-
-                Department of State Records and Archives
-                CLASSIFICATION: TOP SECRET
-
-                SUMMARY:
-                """);
-        if (latePerson == null) {
-            System.out.println("All staff clocked in on time and worked dutifully throughout the day.");
-        }
-        else {
-            System.out.println("One Staff member was late. This will reflect greatly on their record...");
-        }
-        System.out.print("""
-                Staff note nothing of significance occured and operations continue as normal.
-
-                EMPLOYEE STATUS:
-                """);
-        for (int i = 0; i < emp.employeeList.size(); i += 1) {
-            System.out.print(emp.employeeList.get(i));
-            if (Objects.equals(emp.employeeList.get(i), latePerson)) {
-                System.out.println(": LATE");
-            }
-            else {
-                System.out.println(": PRESENT");
-            }
-        }
-
-        System.out.println("\nBOOK INVENTORY");
-            /*
-                COMMENTS:
-
-                BOOK INVENTORY:
-                BORROWED BOOKS:
-                MISSING BOOKS:
-
-                ARCHIVE INVENTORY
-                MISSING ARCHIVES - CLASSIFICATION TYPE
-                """);
-
-    }
-*/
-
 }
