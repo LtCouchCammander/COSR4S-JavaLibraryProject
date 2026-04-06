@@ -8,25 +8,5 @@ public class Loan {
         this.member = member;
         this.daysBorrowed = 0;
     }
-
-
-    // ______________________________________________________
-
-/*
-    public int getDaysBorrowed() {
-        return daysBorrowed;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public Member getMember() {
-        return member;
-    }
-
-
- */
-
 }
 

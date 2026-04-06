@@ -18,6 +18,7 @@ public class Main {
 
             int action = Rand.randomInt(0, 2); // 0 or 1
             Member memberVariable = lib.members.get(Rand.randomInt(0, lib.members.size()));
+
             if (action == 0) {
                 // Borrow book
                 Book bookVariable = lib.books.get(Rand.randomInt(0, lib.books.size()));
@@ -64,7 +65,6 @@ public class Main {
 //-----------------------------------------------------------------------------------------------------
 
             // Display Library Status
-
             System.out.println("\n--- Library Status ---");
 
             for (Book b : lib.books) {
@@ -94,19 +94,3 @@ public class Main {
         }
     }
 }
-
-
-
-            /*
-            // simulate a random event
-            int randomNumber = Rand.randomInt(0, 4); // could generate 0, 1, 2, or 3
-
-            switch (randomNumber) {
-                case 0 -> lib.report0();
-                case 1 -> lib.report1();
-                case 2 -> lib.report2();
-                case 3 -> lib.report3();
-            }
-            lib.report();
-             */
-// Input.waitForUserToPressEnter("Press Enter to simulate the next day.");

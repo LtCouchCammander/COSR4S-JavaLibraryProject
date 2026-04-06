@@ -11,25 +11,5 @@ public class Book {
         this.title = title;
         this.isAvailable = true;
     }
-
-    // ______________________________________________________
-/*
-    public String getTitle() {
-        return title;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public void borrowBook() {
-        isAvailable = false;
-    }
-
-    public void returnBook() {
-        isAvailable = true;
-    }
-
- */
 }
 
