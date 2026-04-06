@@ -1,3 +1,13 @@
+// Disclaimer
+//
+// We originally planned on doing a cool USSR Cold War themed library but
+// bit off way more than we could chew and ended up with just a goofy
+// russian themed library.
+
+// Ai was used to help understand how the fields stored in other files are used and called upon in the
+// main file and other similar concepts.
+
+
 public class Main {
     public static void main(String[] args) {
         Library lib = new Library();
@@ -11,6 +21,8 @@ public class Main {
 //-----------------------------------------------------------------------------------------------------
 
             // AI Simulation
+            // This section of code simulates the actions of library members in regards too
+            // borrowing and returning books, along with loans.
 
             for (Loan value : lib.loans) {
                 value.daysBorrowed++;
@@ -20,7 +32,7 @@ public class Main {
             Member memberVariable = lib.members.get(Rand.randomInt(0, lib.members.size()));
 
             if (action == 0) {
-                // Borrow book
+                // Borrow a book
                 Book bookVariable = lib.books.get(Rand.randomInt(0, lib.books.size()));
                 // gets book
 
@@ -65,6 +77,7 @@ public class Main {
 //-----------------------------------------------------------------------------------------------------
 
             // Display Library Status
+            // Print the list of books and weather or not they are available to be borrowed.
             System.out.println("\n--- Library Status ---");
 
             for (Book b : lib.books) {
