@@ -24,53 +24,50 @@ public class Main {
             // This section of code simulates the actions of library members in regards too
             // borrowing and returning books, along with loans.
 
-            for (Loan value : lib.loans) {
-                value.daysBorrowed++;
+            // Enhanced for loop goes through each loan in the array and adds 1 to the daysBorrowed variable
+            for (Loan borrowedLoan : lib.loans) {
+                borrowedLoan.daysBorrowed++;
             }
 
+            // Uses Rand methods to decide on if an action is taken and which patron does so
             int action = Rand.randomInt(0, 2); // 0 or 1
-            Member memberVariable = lib.members.get(Rand.randomInt(0, lib.members.size()));
+            Member chosenMember = lib.members.get(Rand.randomInt(0, lib.members.size()));
 
+            // Borrow a book
             if (action == 0) {
-                // Borrow a book
-                Book bookVariable = lib.books.get(Rand.randomInt(0, lib.books.size()));
-                // gets book
+                // Chooses random book
+                Book choosenBook = lib.books.get(Rand.randomInt(0, lib.books.size()));
 
-                if (bookVariable.isAvailable) {
-                    // sets book to borrowed
-                    bookVariable.isAvailable = false;
-                    // adds borrowed book under member who borrowed it
-                    memberVariable.borrowedBooks.add(bookVariable);
+                if (choosenBook.isAvailable) {
+                    // Sets book to borrowed
+                    choosenBook.isAvailable = false;
+                    // Adds borrowed book under member who borrowed it
+                    chosenMember.borrowedBooks.add(choosenBook);
 
-                    lib.loans.add(new Loan(bookVariable, memberVariable));
+                    lib.loans.add(new Loan(choosenBook, chosenMember));
 
-                    System.out.println(memberVariable.name + " borrowed - " + bookVariable.title);
+                    System.out.println(chosenMember.name + " borrowed - " + choosenBook.title);
                 }
             }
 
             // Return book (if they have one)
             else {
-                if (!memberVariable.borrowedBooks.isEmpty()) {
-                    Book bookToReturn = memberVariable.borrowedBooks.get(0);
+                if (!chosenMember.borrowedBooks.isEmpty()) {
+                    Book bookToReturn = chosenMember.borrowedBooks.getFirst();
 
                     bookToReturn.isAvailable = true;
-                    memberVariable.borrowedBooks.remove(bookToReturn);
+                    chosenMember.borrowedBooks.remove(bookToReturn);
 
-                    // REMOVE matching loan
-                    Loan loanToRemove = null;
-
-                    for (Loan loan : lib.loans) {
-                        if (loan.book == bookToReturn && loan.member == memberVariable) {
-                            loanToRemove = loan;
-                            break;
+                    // Intellij recommened a remove if statement. Was using for loop before...
+                    lib.loans.removeIf(removeLoan -> removeLoan.book == bookToReturn && removeLoan.member == chosenMember);
+                    /*
+                    for (Loan removeLoan : lib.loans) {
+                        if (removeLoan.book == bookToReturn && removeLoan.member == chosenMember) {
+                            lib.loans.remove(removeLoan);
                         }
-                    }
+                    }*/
 
-                    if (loanToRemove != null) {
-                        lib.loans.remove(loanToRemove);
-                    }
-
-                    System.out.println(memberVariable.name + " returned - " + bookToReturn.title);
+                    System.out.println(chosenMember.name + " returned - " + bookToReturn.title);
                 }
             }
 
