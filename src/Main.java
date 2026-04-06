@@ -43,7 +43,7 @@ public class Main {
                     choosenBook.isAvailable = false;
                     // Adds borrowed book under member who borrowed it
                     chosenMember.borrowedBooks.add(choosenBook);
-
+                    // Creates a new loan for the respect book and member
                     lib.loans.add(new Loan(choosenBook, chosenMember));
 
                     System.out.println(chosenMember.name + " borrowed - " + choosenBook.title);
@@ -52,12 +52,16 @@ public class Main {
 
             // Return book (if they have one)
             else {
+                // Checks to see if the member has any borrowed books
                 if (!chosenMember.borrowedBooks.isEmpty()) {
+                    // Gets the first book to return in the members array
                     Book bookToReturn = chosenMember.borrowedBooks.getFirst();
 
+                    // Sets the books availability to true and removes it form the borrowed books array
                     bookToReturn.isAvailable = true;
                     chosenMember.borrowedBooks.remove(bookToReturn);
 
+                    // removes the loan from the loans array
                     // Intellij recommened a remove if statement. Was using for loop before...
                     lib.loans.removeIf(removeLoan -> removeLoan.book == bookToReturn && removeLoan.member == chosenMember);
                     /*
@@ -77,12 +81,14 @@ public class Main {
             // Print the list of books and weather or not they are available to be borrowed.
             System.out.println("\n--- Library Status ---");
 
+            // Shows books and their availability status
             for (Book b : lib.books) {
                 System.out.println(b.title + " | Available: " + b.isAvailable);
             }
 
             System.out.println("\n--- Active Loans ---");
 
+            // Shows members active loans and information
             for (Loan loan : lib.loans) {
                 System.out.println(
                         loan.member.name + " has \"" +
@@ -91,6 +97,7 @@ public class Main {
 
                 );
 
+                // Calculates the fees for books borrowed over 20 days
                 float over20Days = (float) loan.daysBorrowed / 20;
                 if (over20Days >= 1) {
                     float fineOwed = over20Days * 550;
