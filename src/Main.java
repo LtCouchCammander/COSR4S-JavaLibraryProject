@@ -15,8 +15,8 @@ public class Main {
         while (true) {
 
             // Advance time
-            lib.currentDay = lib.currentDay + 1;
-            System.out.println("\n--- Day " + lib.currentDay + " ---");
+            lib.incrementCurrentDay();
+            System.out.println("\n--- Day " + lib.getCurrentDay() + " ---");
 
 //-----------------------------------------------------------------------------------------------------
 
@@ -25,26 +25,26 @@ public class Main {
             // borrowing and returning books, along with loans.
 
             // Enhanced for loop goes through each loan in the array and adds 1 to the daysBorrowed variable
-            for (Loan borrowedLoan : lib.loans) {
-                borrowedLoan.daysBorrowed++;
+            for (Loan borrowedLoan : lib.getLoans()) {
+                borrowedLoan.incrementDaysBorrowed();
             }
 
             // Uses Rand methods to decide on if an action is taken and which patron does so
             int action = Rand.randomInt(0, 2); // 0 or 1
-            Member chosenMember = lib.members.get(Rand.randomInt(0, lib.members.size()));
+            Member chosenMember = lib.getMembers().get(Rand.randomInt(0, lib.getMembers().size()));                     // Refine?
 
             // Borrow a book
             if (action == 0) {
                 // Chooses random book
-                Book choosenBook = lib.books.get(Rand.randomInt(0, lib.books.size()));
+                Book choosenBook = lib.getBooks().get(Rand.randomInt(0, lib.getBooks().size()));                        // Refine?
 
-                if (choosenBook.isAvailable) {
+                if (choosenBook.isAvailable()) {
                     // Sets book to borrowed
-                    choosenBook.isAvailable = false;
+                    choosenBook.setIsAvailableFalse();
                     // Adds borrowed book under member who borrowed it
-                    chosenMember.borrowedBooks.add(choosenBook);
+                    chosenMember.addBorrowedBooks(choosenBook);
                     // Creates a new loan for the respect book and member
-                    lib.loans.add(new Loan(choosenBook, chosenMember));
+                    lib.getLoans().add(new Loan(choosenBook, chosenMember));
 
                     System.out.println(chosenMember.name + " borrowed - " + choosenBook.title);
                 }

@@ -2,10 +2,10 @@
 import java.util.ArrayList;
 
 public class Library {
-    int currentDay; // Current simulation day
-    ArrayList<Book> books = new ArrayList<>();
-    ArrayList<Member> members = new ArrayList<>();
-    ArrayList<Loan> loans = new ArrayList<>();
+    private int currentDay; // Current simulation day
+    private ArrayList<Book> books = new ArrayList<>();
+    private ArrayList<Member> members = new ArrayList<>();
+    private ArrayList<Loan> loans = new ArrayList<>();
 
     // Adds members and books into arrays
     public Library() {
@@ -34,5 +34,25 @@ public class Library {
         members.add(new Member("Vladimir Morozov"));
         members.add(new Member("Yuri Lebedev"));
         members.add(new Member("Tatiana Orlova"));
+    }
+
+    public void incrementCurrentDay() {
+        currentDay++;
+    }
+
+    public ArrayList<Loan> getLoans() {
+        return loans;
+    }
+
+    public ArrayList<Member> getMembers() {
+        return members;
+    }
+
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
+    public int getCurrentDay() {
+        return currentDay;
     }
 }

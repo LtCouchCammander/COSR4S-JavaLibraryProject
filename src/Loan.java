@@ -1,12 +1,16 @@
 public class Loan {
-    Book book;
-    Member member;
-    int daysBorrowed;
+    private Book book;
+    private Member member;
+    private int daysBorrowed;
 
     public Loan(Book book, Member member) {
         this.book = book;
         this.member = member;
         this.daysBorrowed = 0;
+    }
+
+    public void incrementDaysBorrowed() {
+        daysBorrowed++;
     }
 }
 
