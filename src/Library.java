@@ -1,11 +1,11 @@
-// library core
 import java.util.ArrayList;
 
 public class Library {
+    // Intellij recommended some of the fields be final. I believe this prevents them from being reassigned after being instantiated
     private int currentDay; // Current simulation day
-    private ArrayList<Book> books = new ArrayList<>();
-    private ArrayList<Member> members = new ArrayList<>();
-    private ArrayList<Loan> loans = new ArrayList<>();
+    private final ArrayList<Book> books = new ArrayList<>();
+    private final ArrayList<Member> members = new ArrayList<>();
+    private final ArrayList<Loan> loans = new ArrayList<>();
 
     // Adds members and books into arrays
     public Library() {
@@ -44,15 +44,34 @@ public class Library {
         return loans;
     }
 
-    public ArrayList<Member> getMembers() {
-        return members;
-    }
-
     public ArrayList<Book> getBooks() {
         return books;
     }
 
     public int getCurrentDay() {
         return currentDay;
+    }
+
+    public Member getRandomMember() {
+        return members.get(Rand.randomInt(0, members.size()));
+    }
+
+    public Book getRandomBook() {
+        return books.get(Rand.randomInt(0, books.size()));
+    }
+
+    public void newLoan(Book bookToLoan, Member memberLoaning) {
+        loans.add(new Loan(bookToLoan, memberLoaning));
+    }
+
+    public void removeLoan(Book bookToReturn, Member chosenMember) {
+        // Intellij recommend a remove if statement. Was using for loop before...
+        loans.removeIf(removeLoan -> removeLoan.getBook() == bookToReturn && removeLoan.getMember() == chosenMember);
+        /*
+        for (Loan removeLoan : lib.loans) {
+            if (removeLoan.book == bookToReturn && removeLoan.member == chosenMember) {
+                lib.loans.remove(removeLoan);
+            }
+        }*/
     }
 }

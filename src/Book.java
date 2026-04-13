@@ -1,7 +1,7 @@
 public class Book {
     // declares variable types
     // Two attributes: Title name and if the book is available or not
-    private String title;
+    private final String title;
     private boolean isAvailable;
 
     public Book(String title) {
