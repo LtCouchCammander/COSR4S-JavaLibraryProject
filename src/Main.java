@@ -7,6 +7,7 @@
 // Ai was used to help understand how the fields stored in other files are used and called upon in the
 // main file and other similar concepts.
 
+// By Hans and Cole.
 
 public class Main {
     public static void main(String[] args) {
