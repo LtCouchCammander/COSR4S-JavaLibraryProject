@@ -7,6 +7,7 @@
 // Ai was used to help understand how the fields stored in other files are used and called upon in the
 // main file and other similar concepts.
 
+// By Hans and Cole.
 
 public class Main {
     public static void main(String[] args) {
@@ -15,90 +16,72 @@ public class Main {
         while (true) {
 
             // Advance time
-            lib.currentDay = lib.currentDay + 1;
-            System.out.println("\n--- Day " + lib.currentDay + " ---");
+            lib.incrementCurrentDay();
+            System.out.println("\n--- Day " + lib.getCurrentDay() + " ---");
 
 //-----------------------------------------------------------------------------------------------------
-
             // AI Simulation
             // This section of code simulates the actions of library members in regards too
             // borrowing and returning books, along with loans.
 
             // Enhanced for loop goes through each loan in the array and adds 1 to the daysBorrowed variable
-            for (Loan borrowedLoan : lib.loans) {
-                borrowedLoan.daysBorrowed++;
+            for (Loan borrowedLoan : lib.getLoans()) {
+                borrowedLoan.incrementDaysBorrowed();
             }
 
             // Uses Rand methods to decide on if an action is taken and which patron does so
             int action = Rand.randomInt(0, 2); // 0 or 1
-            Member chosenMember = lib.members.get(Rand.randomInt(0, lib.members.size()));
+            Member chosenMember = lib.getRandomMember(); // I got rid of all the gets to make it more readable. Also did this for a couple other lines below. Used to be lib.getMembers().get(Rand.randomInt(0, lib.getMembers().size()));
 
             // Borrow a book
             if (action == 0) {
-                // Chooses random book
-                Book choosenBook = lib.books.get(Rand.randomInt(0, lib.books.size()));
+                Book chosenBook = lib.getRandomBook(); // Chooses random book
 
-                if (choosenBook.isAvailable) {
-                    // Sets book to borrowed
-                    choosenBook.isAvailable = false;
-                    // Adds borrowed book under member who borrowed it
-                    chosenMember.borrowedBooks.add(choosenBook);
-                    // Creates a new loan for the respect book and member
-                    lib.loans.add(new Loan(choosenBook, chosenMember));
-
-                    System.out.println(chosenMember.name + " borrowed - " + choosenBook.title);
+                if (chosenBook.isAvailable()) {
+                    chosenBook.setIsAvailableFalse(); // Sets book to borrowed
+                    chosenMember.addBorrowedBooks(chosenBook);// Adds borrowed book under member who borrowed it
+                    lib.newLoan(chosenBook, chosenMember); // Creates a new loan for the respective book and member
+                    System.out.println(chosenMember.getName() + " borrowed - " + chosenBook.getTitle());
                 }
             }
 
             // Return book (if they have one)
             else {
+
                 // Checks to see if the member has any borrowed books
-                if (!chosenMember.borrowedBooks.isEmpty()) {
-                    // Gets the first book to return in the members array
-                    Book bookToReturn = chosenMember.borrowedBooks.getFirst();
+                if (!chosenMember.getBorrowedBooks().isEmpty()) {
 
-                    // Sets the books availability to true and removes it form the borrowed books array
-                    bookToReturn.isAvailable = true;
-                    chosenMember.borrowedBooks.remove(bookToReturn);
-
-                    // removes the loan from the loans array
-                    // Intellij recommened a remove if statement. Was using for loop before...
-                    lib.loans.removeIf(removeLoan -> removeLoan.book == bookToReturn && removeLoan.member == chosenMember);
-                    /*
-                    for (Loan removeLoan : lib.loans) {
-                        if (removeLoan.book == bookToReturn && removeLoan.member == chosenMember) {
-                            lib.loans.remove(removeLoan);
-                        }
-                    }*/
-
-                    System.out.println(chosenMember.name + " returned - " + bookToReturn.title);
+                    Book bookToReturn = chosenMember.getFirstBorrowedBook(); // Gets the first book to return in the members array
+                    bookToReturn.setIsAvailableTrue(); // Sets the books availability to true and removes it form the borrowed books array
+                    chosenMember.removeBorrowedBooks(bookToReturn); // Removes members borrowed books from its array
+                    lib.removeLoan(bookToReturn, chosenMember); // Removes the loan from the loans array
+                    System.out.println(chosenMember.getName() + " returned - " + bookToReturn.getTitle());
                 }
             }
 
 //-----------------------------------------------------------------------------------------------------
-
             // Display Library Status
             // Print the list of books and weather or not they are available to be borrowed.
             System.out.println("\n--- Library Status ---");
 
             // Shows books and their availability status
-            for (Book b : lib.books) {
-                System.out.println(b.title + " | Available: " + b.isAvailable);
+            for (Book currentBook : lib.getBooks()) {
+                System.out.println(currentBook.getTitle() + " | Available: " + currentBook.isAvailable());
             }
 
             System.out.println("\n--- Active Loans ---");
 
             // Shows members active loans and information
-            for (Loan loan : lib.loans) {
+            for (Loan loan : lib.getLoans()) {
                 System.out.println(
-                        loan.member.name + " has \"" +
-                                loan.book.title + "\" for " +
-                                loan.daysBorrowed + " days"
+                        loan.getMember().getName() + " has \"" +
+                                loan.getBook().getTitle() + "\" for " +
+                                loan.getDaysBorrowed() + " days"
 
                 );
 
                 // Calculates the fees for books borrowed over 20 days
-                float over20Days = (float) loan.daysBorrowed / 20;
+                float over20Days = (float) loan.getDaysBorrowed() / 20;
                 if (over20Days >= 1) {
                     float fineOwed = over20Days * 550;
                     System.out.println("Over Due Fines | ₽ Owed: " + fineOwed);

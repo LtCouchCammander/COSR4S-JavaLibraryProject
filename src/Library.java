@@ -1,11 +1,11 @@
-// library core
 import java.util.ArrayList;
 
 public class Library {
-    int currentDay; // Current simulation day
-    ArrayList<Book> books = new ArrayList<>();
-    ArrayList<Member> members = new ArrayList<>();
-    ArrayList<Loan> loans = new ArrayList<>();
+    // Intellij recommended some of the fields be final. I believe this prevents them from being reassigned after being instantiated
+    private int currentDay; // Current simulation day
+    private final ArrayList<Book> books = new ArrayList<>();
+    private final ArrayList<Member> members = new ArrayList<>();
+    private final ArrayList<Loan> loans = new ArrayList<>();
 
     // Adds members and books into arrays
     public Library() {
@@ -34,5 +34,44 @@ public class Library {
         members.add(new Member("Vladimir Morozov"));
         members.add(new Member("Yuri Lebedev"));
         members.add(new Member("Tatiana Orlova"));
+    }
+
+    public void incrementCurrentDay() {
+        currentDay++;
+    }
+
+    public ArrayList<Loan> getLoans() {
+        return loans;
+    }
+
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
+    public int getCurrentDay() {
+        return currentDay;
+    }
+
+    public Member getRandomMember() {
+        return members.get(Rand.randomInt(0, members.size()));
+    }
+
+    public Book getRandomBook() {
+        return books.get(Rand.randomInt(0, books.size()));
+    }
+
+    public void newLoan(Book bookToLoan, Member memberLoaning) {
+        loans.add(new Loan(bookToLoan, memberLoaning));
+    }
+
+    public void removeLoan(Book bookToReturn, Member chosenMember) {
+        // Intellij recommend a remove if statement. Was using for loop before...
+        loans.removeIf(removeLoan -> removeLoan.getBook() == bookToReturn && removeLoan.getMember() == chosenMember);
+        /*
+        for (Loan removeLoan : lib.loans) {
+            if (removeLoan.book == bookToReturn && removeLoan.member == chosenMember) {
+                lib.loans.remove(removeLoan);
+            }
+        }*/
     }
 }
